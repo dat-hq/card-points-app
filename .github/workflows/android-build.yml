@@ -36,8 +36,6 @@ jobs:
       - name: Build with Gradle
         working-directory: android
         run: |
-          # Fix potential Windows CRLF issues in gradlew
-          sed -i 's/\r$//' gradlew
           chmod +x gradlew
           ./gradlew assembleDebug
 
