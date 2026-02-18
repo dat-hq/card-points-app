@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
-          java-version: '17'
+          java-version: '21'
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -35,7 +35,9 @@ jobs:
 
       - name: Build with Gradle
         working-directory: android
-        run: gradle assembleDebug --stacktrace
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
